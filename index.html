@@ -4,13 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
-    <!-- <link rel="stylesheet" href="bootstrap.min.css"> -->
     <link rel="stylesheet" href="CSS/skin/color-1.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-
     <link
       rel="stylesheet"
       href="CSS/skin/color-1.css"
@@ -50,9 +48,7 @@
     <link rel="stylesheet" href="CSS/style.css" />
   </head>
   <body>
-    <!-- main container -->
     <div class="main-container">
-      <!-- Aside start -->
       <div class="aside">
         <div class="logo">
           <a href="#"><span>M</span>o</a>
@@ -71,18 +67,14 @@
             <a href="#services"><i class="fa fa-list"></i>Services</a>
           </li>
           <li>
-            <a href="#portfolio"><i class="fa fa-briefcase"></i>Protfolio</a>
+            <a href="#portfolio"><i class="fa fa-briefcase"></i>Portfolio</a>
           </li>
           <li>
             <a href="#contact"><i class="fa fa-comments"></i>Contact</a>
           </li>
         </ul>
       </div>
-      <!-- Aside end -->
-
-      <!-- Main Content start -->
       <div class="main-content">
-        <!-- Home Section start -->
         <section class="home active section" id="home">
           <div class="container">
             <div class="row">
@@ -91,7 +83,7 @@
                   Hello, my name is <span class="name">Mohamed Ali</span>
                 </h3>
                 <h3 class="my-profession">
-                  I'm a Software Engineering <span class="typing"></span>
+                  I'm a Software Engineer <span class="typing"></span>
                 </h3>
                 <p>
                   Full-stack web developer proficient in building dynamic
@@ -106,9 +98,6 @@
             </div>
           </div>
         </section>
-        <!-- Home Section end -->
-
-        <!-- About Section start -->
         <section class="about section" id="about">
           <div class="container">
             <div class="row">
@@ -120,23 +109,16 @@
               <div class="about-content padd-15">
                 <div class="row">
                   <div class="about-text padd-15">
-                    <h3>
-                      I'm Mohamed Ali and <span>Software Engineering</span>
-                    </h3>
+                    <h3>I'm Mohamed Ali and <span>Software Engineer</span></h3>
                     <p>
                       I am a results-driven Full Stack Developer specializing in
                       the MERN stack and modern JavaScript frameworks. My
                       expertise lies in building dynamic, high-performance web
                       applications. I utilize React for intuitive front-end
                       development, often integrating Next.js to leverage
-                      server-side rendering, optimize performance, and ensure
-                      scalability. On the back-end, I rely on Node.js and
-                      Express.js to architect fast, reliable APIs, managing
-                      flexible data structures with MongoDB. I thrive in Agile
-                      environments, committed to writing clean, maintainable
-                      code that effectively translates user needs into polished,
-                      functional solutions. I am continuously exploring emerging
-                      tech to enhance project quality and performance.
+                      server-side rendering. On the back-end, I rely on Node.js
+                      and Express.js to architect fast, reliable APIs with
+                      MongoDB.
                     </p>
                   </div>
                 </div>
@@ -144,23 +126,10 @@
                   <div class="personal-info padd-15">
                     <div class="row">
                       <div class="info-item padd-15">
-                        <p>Birthday : <span>25 may 2005</span></p>
+                        <p>Birthday : <span>25 May 2005</span></p>
                       </div>
                       <div class="info-item padd-15">
                         <p>Age : <span>20</span></p>
-                      </div>
-                      <div class="info-item padd-15">
-                        <p>
-                          linkedin :
-                          <span class="linkedin"
-                            >www.linkedin.com/in/mohamed-abohelal</span
-                          >
-                        </p>
-                      </div>
-                      <div class="info-item padd-15">
-                        <p>
-                          Email : <span>mohamed.abohelal.eng@gmail.com</span>
-                        </p>
                       </div>
                       <div class="info-item padd-15">
                         <p>Degree : <span>CS</span></p>
@@ -174,6 +143,14 @@
                       <div class="info-item padd-15">
                         <p>Freelance : <span>Available</span></p>
                       </div>
+                      <div class="info-item padd-15">
+                        <p>
+                          Email : <span>mohamed.abohelal.eng@gmail.com</span>
+                        </p>
+                      </div>
+                      <div class="info-item padd-15">
+                        <p>LinkedIn : <span>www.linkedin.com/in/mohamed-abohelal</span></p>
+                      </div>
                     </div>
                     <div class="row">
                       <div class="buttons padd-15">
@@ -184,32 +161,79 @@
                       </div>
                     </div>
                   </div>
-                  <div class="skill padd-15">
-                    <div class="row">
-                      <div class="skill-item padd-15">
-                        <h5>Nodejs</h5>
-                        <div class="progress">
-                          <div class="progress-in" style="width: 90%"></div>
-                          <div class="skill-percent">80%</div>
+                </div>
+
+                <div class="row" style="margin-top: 50px">
+                  <div class="skill-orbit padd-15">
+                    <div class="orbit-wrapper">
+                      <div class="center-icon">
+                        <i class="fa-brands fa-node-js"></i>
+                        <span>Node.js</span>
+                      </div>
+                      <div class="orbit-spinner">
+                        <div class="satellite" style="--i: 0; --total: 4">
+                          <img src="image/ex.png" alt="Express" /><span
+                            >Express</span
+                          >
+                        </div>
+                        <div class="satellite" style="--i: 1; --total: 4">
+                          <img src="image/my.png" alt="MySQL" /><span
+                            >MySQL</span
+                          >
+                        </div>
+                        <div class="satellite" style="--i: 2; --total: 4">
+                          <img src="image/mongo.png" alt="MongoDB" /><span
+                            >MongoDB</span
+                          >
+                        </div>
+                        <div class="satellite" style="--i: 3; --total: 4">
+                          <img src="image/doc.png" alt="Docker" /><span
+                            >Docker</span
+                          >
                         </div>
                       </div>
-                      <div class="skill-item padd-15">
-                        <h5>React</h5>
-                        <div class="progress">
-                          <div class="progress-in" style="width: 86%"></div>
-                          <div class="skill-percent">86%</div>
+                    </div>
+                  </div>
+
+                  <div class="skill-orbit padd-15">
+                    <div class="orbit-wrapper">
+                      <div class="center-icon">
+                        <i class="fa-brands fa-react"></i>
+                        <span>React</span>
+                      </div>
+                      <div class="orbit-spinner">
+                        <div class="satellite" style="--i: 0; --total: 5">
+                          <img src="image/next.png" alt="Next" /><span
+                            >Next.js</span
+                          >
+                        </div>
+                        <div class="satellite" style="--i: 1; --total: 5">
+                          <img src="image/Tail.png" alt="Tailwind" /><span
+                            >Tailwind</span
+                          >
+                        </div>
+                        <div class="satellite" style="--i: 2; --total: 5">
+                          <img src="image/ts.png" alt="TS" /><span>TS</span>
+                        </div>
+                        <div class="satellite" style="--i: 3; --total: 5">
+                          <img src="image/js.png" alt="JS" /><span>JS</span>
+                        </div>
+                        <div class="satellite" style="--i: 4; --total: 5">
+                          <img src="image/boots.jpeg" alt="BS" /><span
+                            >Bootstrap</span
+                          >
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+
                 <div class="row">
                   <div class="education padd-15">
                     <h3 class="title">Education</h3>
                     <div class="row">
                       <div class="timeline-box padd-15">
                         <div class="timeline shadow-dark">
-                          <!-- ==== timeline item ==== -->
                           <div class="timeline-item">
                             <div class="circle-dot"></div>
                             <h3 class="timeline-date">
@@ -220,7 +244,7 @@
                             </h4>
                             <p class="timeline-text">
                               Tanta University Faculty of Computers and
-                              Information– Computer Science Department
+                              Information – Computer Science Department
                             </p>
                           </div>
                         </div>
@@ -232,7 +256,6 @@
                     <div class="row">
                       <div class="timeline-box padd-15">
                         <div class="timeline shadow-dark">
-                          <!-- ==== timeline item ==== -->
                           <div class="timeline-item">
                             <div class="circle-dot"></div>
                             <h3 class="timeline-date">
@@ -246,21 +269,7 @@
                               </li>
                               <li>
                                 Translated UI/UX design concepts into modern,
-                                functional, and user-friendly interfaces.
-                              </li>
-                              <li>
-                                Improved user experience through accessibility
-                                and mobile-first design practices.
-                              </li>
-                              <li>
-                                Collaborated with peers to build visually
-                                appealing websites that align with client
-                                requirements.
-                              </li>
-                              <li>
-                                Gained practical experience in frontend
-                                workflow, version control, and web performance
-                                optimization.
+                                functional interfaces.
                               </li>
                             </ul>
                           </div>
@@ -273,8 +282,6 @@
             </div>
           </div>
         </section>
-        <!-- About Section end -->
-        <!-- Services Section strat -->
         <section class="service section" id="services">
           <div class="container">
             <div class="row">
@@ -283,93 +290,45 @@
               </div>
             </div>
             <div class="row">
-              <!-- services item start -->
               <div class="service-item padd-15">
                 <div class="service-item-inner">
-                  <div class="icon"><i class="fa fa-laptop-code"></i></div>
+                  <div class="icon">
+                    <i class="fa fa-code"></i>
+                  </div>
                   <h4>Web Development</h4>
                   <p>
-                    Build full-featured and high-performance web applications
-                    using React, Node.js, Express, and MongoDB with clean and
-                    scalable architecture.
+                    Building fast and responsive websites using modern
+                    technologies.
                   </p>
                 </div>
               </div>
-              <!-- services item end -->
-
-              <!-- services item start -->
               <div class="service-item padd-15">
                 <div class="service-item-inner">
-                  <div class="icon"><i class="fa fa-palette"></i></div>
-                  <h4>Web Design</h4>
+                  <div class="icon">
+                    <i class="fa fa-mobile-alt"></i>
+                  </div>
+                  <h4>Frontend Design</h4>
                   <p>
-                    Create modern, responsive, and user-friendly website designs
-                    that reflect brand identity and deliver an excellent user
-                    experience.
+                    Creating intuitive and beautiful user interfaces with React
+                    & Tailwind.
                   </p>
                 </div>
               </div>
-              <!-- services item end -->
-
-              <!-- services item start -->
               <div class="service-item padd-15">
                 <div class="service-item-inner">
-                  <div class="icon"><i class="fa fa-code"></i></div>
-                  <h4>Frontend Development</h4>
+                  <div class="icon">
+                    <i class="fa fa-server"></i>
+                  </div>
+                  <h4>Backend API</h4>
                   <p>
-                    Develop interactive and dynamic user interfaces using React
-                    and JavaScript, focusing on performance and mobile
-                    responsiveness.
+                    Developing robust APIs using Node.js and Express linked with
+                    MongoDB.
                   </p>
                 </div>
               </div>
-              <!-- services item end -->
-
-              <!-- services item start -->
-              <div class="service-item padd-15">
-                <div class="service-item-inner">
-                  <div class="icon"><i class="fa fa-server"></i></div>
-                  <h4>Backend Development</h4>
-                  <p>
-                    Design and implement secure RESTful APIs using Node.js and
-                    Express, with efficient data handling through MongoDB.
-                  </p>
-                </div>
-              </div>
-              <!-- services item end -->
-
-              <!-- services item start -->
-              <div class="service-item padd-15">
-                <div class="service-item-inner">
-                  <div class="icon"><i class="fa fa-rocket"></i></div>
-                  <h4>Performance Optimization</h4>
-                  <p>
-                    Optimize websites for speed, SEO, and overall performance by
-                    improving code structure, caching, and asset delivery.
-                  </p>
-                </div>
-              </div>
-              <!-- services item end -->
-
-              <!-- services item start -->
-              <div class="service-item padd-15">
-                <div class="service-item-inner">
-                  <div class="icon"><i class="fa fa-shield-alt"></i></div>
-                  <h4>Website Maintenance & Security</h4>
-                  <p>
-                    Provide regular maintenance, updates, and security
-                    improvements to ensure stability and long-term reliability
-                    of your website.
-                  </p>
-                </div>
-              </div>
-              <!-- services item end -->
             </div>
           </div>
         </section>
-
-        <!-- Services Section end -->
-        <!-- portfilio Section strat -->
         <section class="portfolio section" id="portfolio">
           <div class="container">
             <div class="row">
@@ -383,7 +342,6 @@
               </div>
             </div>
             <div class="row">
-              <!-- portfolio item start -->
               <div class="portfolio-item padd-15">
                 <div class="portfolio-item-inner shadow-dark">
                   <div class="portfolio-img">
@@ -391,8 +349,6 @@
                   </div>
                 </div>
               </div>
-              <!-- portfolio item end -->
-              <!-- portfolio item start -->
               <div class="portfolio-item padd-15">
                 <div class="portfolio-item-inner shadow-dark">
                   <div class="portfolio-img">
@@ -400,8 +356,6 @@
                   </div>
                 </div>
               </div>
-              <!-- portfolio item end -->
-              <!-- portfolio item start -->
               <div class="portfolio-item padd-15">
                 <div class="portfolio-item-inner shadow-dark">
                   <div class="portfolio-img">
@@ -409,39 +363,9 @@
                   </div>
                 </div>
               </div>
-              <!-- portfolio item end -->
-              <!-- portfolio item start -->
-              <div class="portfolio-item padd-15">
-                <div class="portfolio-item-inner shadow-dark">
-                  <div class="portfolio-img">
-                    <img src="image/img4.png" alt="" />
-                  </div>
-                </div>
-              </div>
-              <!-- portfolio item end -->
-              <!-- portfolio item start -->
-              <div class="portfolio-item padd-15">
-                <div class="portfolio-item-inner shadow-dark">
-                  <div class="portfolio-img">
-                    <img src="image/img5.png" alt="" />
-                  </div>
-                </div>
-              </div>
-              <!-- portfolio item end -->
-              <!-- portfolio item start -->
-              <div class="portfolio-item padd-15">
-                <div class="portfolio-item-inner shadow-dark">
-                  <div class="portfolio-img">
-                    <img src="image/img6.png" alt="" />
-                  </div>
-                </div>
-              </div>
-              <!-- portfolio item end -->
             </div>
           </div>
         </section>
-        <!-- portfilio Section end -->
-        <!-- Contact Section strat -->
         <section class="contact section" id="contact">
           <div class="container">
             <div class="row">
@@ -452,45 +376,25 @@
             <h3 class="contact-title padd-15">Have you any Question ?</h3>
             <h4 class="contact-sub-title padd-15">I'm at your Services</h4>
             <div class="row">
-              <!-- Contact info item start -->
               <div class="contact-info-item padd-15">
                 <div class="icon"><i class="fa fa-phone"></i></div>
                 <h4>Call</h4>
-                <p>
-                  <a href="tel:+201093122064" target="_blank">+20 1093122064</a>
-                </p>
+                <p><a href="tel:+201093122064">+20 1093122064</a></p>
               </div>
-              <!-- Contact info item end -->
-
-              <!-- Contact info item start -->
               <div class="contact-info-item padd-15">
                 <div class="icon"><i class="fa fa-map-marker-alt"></i></div>
                 <h4>Location</h4>
-                <p>
-                  <a
-                    href="https://www.google.com/maps/place/Tanta,+Gharbia,+Egypt"
-                    target="_blank"
-                    >Cairo, Egypt</a
-                  >
-                </p>
+                <p>Cairo, Egypt</p>
               </div>
-              <!-- Contact info item end -->
-
-              <!-- Contact info item start -->
               <div class="contact-info-item padd-15">
                 <div class="icon"><i class="fa fa-envelope"></i></div>
                 <h4>Email</h4>
                 <p>
-                  <a
-                    href="mailto:mohamed.abohelal.eng@gmail.com"
-                    target="_blank"
+                  <a href="mailto:mohamed.abohelal.eng@gmail.com"
                     >mohamed.abohelal.eng@gmail.com</a
                   >
                 </p>
               </div>
-              <!-- Contact info item end -->
-
-              <!-- Contact info item start -->
               <div class="contact-info-item padd-15">
                 <div class="icon">
                   <i class="fa-brands fa-square-linkedin"></i>
@@ -500,19 +404,13 @@
                   <a
                     href="https://www.linkedin.com/in/mohamed-abohelal"
                     target="_blank"
+                    >www.linkedin.com/in/mohamed-abohelal</a
                   >
-                    linkedin.com/in/mohamed-abohelal
-                  </a>
                 </p>
               </div>
-              <!-- Contact info item end -->
             </div>
 
             <h3 class="contact-title padd-15">Send Me an Email</h3>
-            <h4 class="contact-sub-title padd-15">
-              I'm very resposive to messages
-            </h4>
-            <!-- Contact form -->
             <div class="row">
               <div class="contact-form padd-15">
                 <div class="row">
@@ -521,9 +419,7 @@
                       <input
                         type="text"
                         class="form-control"
-                        name=""
                         placeholder="name"
-                        id=""
                       />
                     </div>
                   </div>
@@ -532,9 +428,7 @@
                       <input
                         type="email"
                         class="form-control"
-                        name=""
                         placeholder="email"
-                        id=""
                       />
                     </div>
                   </div>
@@ -545,9 +439,7 @@
                       <input
                         type="text"
                         class="form-control"
-                        name=""
                         placeholder="Subject"
-                        id=""
                       />
                     </div>
                   </div>
@@ -556,9 +448,7 @@
                   <div class="form-item col-12 padd-15">
                     <div class="form-group">
                       <textarea
-                        name=""
                         class="form-control"
-                        id=""
                         placeholder="Message"
                       ></textarea>
                     </div>
@@ -573,16 +463,13 @@
             </div>
           </div>
         </section>
-        <!-- Contact Section end -->
       </div>
-      <!-- Main Content end -->
     </div>
-    <!-- style Switcher Start -->
+
     <div class="style-switcher">
       <div class="style-switcher-toggler s-icon">
         <i class="fa-solid fa-cog fa-spin"></i>
       </div>
-
       <div class="day-night s-icon">
         <i class="fas fa-moon"></i>
       </div>
@@ -595,7 +482,7 @@
         <span class="color-5" onclick="setActiveStyle('color-5')"></span>
       </div>
     </div>
-    <!-- style Switcher End -->
+
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"
       integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ=="
