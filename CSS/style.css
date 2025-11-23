@@ -1049,3 +1049,13 @@ h3.my-profession {
     display: none;
   }
 }
+
+@media (max-width: 767px) {
+  /* ... أكوادك القديمة الموجودة هنا اتركها كما هي ... */
+
+  /* هذا الكود سيجعل عناصر المعلومات الشخصية تأخذ عرض الشاشة بالكامل */
+  .about .about-content .personal-info .info-item {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
