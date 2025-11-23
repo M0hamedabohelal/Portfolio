@@ -13,13 +13,13 @@ const nav = document.querySelector(".nav"),
   allSection = document.querySelectorAll(".section"),
   totalSection = allSection.length;
 
-// إضافة حدث النقر لزر الـ nav-toggler لتبديل القائمة الجانبية
+
 const navToggler = document.querySelector(".nav-toggler");
 navToggler.addEventListener("click", () => {
   document.querySelector(".aside").classList.toggle("open");
 });
 
-// إضافة حدث النقر لأزرار Hire Me
+
 const hireMeButtons = document.querySelectorAll(".hire-me");
 hireMeButtons.forEach((button) => {
   button.addEventListener("click", function (e) {
