@@ -612,6 +612,8 @@ h3.my-profession {
 }
 
 /* ================= Contact Section ================= */
+/* ================= Contact Section Styling (Updated) ================= */
+
 .contact-title {
   color: var(--skin-color);
   text-align: center;
@@ -633,24 +635,126 @@ h3.my-profession {
   margin-bottom: 60px;
 }
 
+/* --- تنسيق حاوية الأيقونة (الدائرة) --- */
 .contact .contact-info-item .icon {
   display: inline-block;
+  width: 60px; /* عرض الدائرة */
+  height: 60px; /* ارتفاع الدائرة */
+  border-radius: 50%; /* جعلها دائرية */
+  border: 1px solid var(--bg-black-50); /* حدود خفيفة */
+  text-align: center;
+  line-height: 60px; /* لتوسيط الأيقونة عمودياً */
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
+/* --- تنسيق الرمز نفسه (داخل الدائرة) --- */
 .contact .contact-info-item .icon .fa,
-.contact .contact-info-item .icon .fa-brands {
+.contact .contact-info-item .icon .fa-brands,
+.contact .contact-info-item .icon i {
+  /* إضافة i لضمان التوافق */
   font-size: 25px;
   color: var(--skin-color);
+  transition: all 0.3s ease;
+  line-height: 60px; /* ضمان التوسيط */
 }
 
+/* --- تأثير الهوفر الجميل --- */
+/* عند الوقوف على العنصر، الدائرة تمتلئ باللون */
+.contact .contact-info-item:hover .icon {
+  background-color: var(--skin-color);
+  border-color: var(--skin-color);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px); /* حركة خفيفة للأعلى */
+}
+
+/* عند الوقوف على العنصر، الأيقونة تصبح بيضاء */
+.contact .contact-info-item:hover .icon .fa,
+.contact .contact-info-item:hover .icon .fa-brands,
+.contact .contact-info-item:hover .icon i {
+  color: #ffffff;
+}
+
+/* --- تنسيق النصوص (العناوين والروابط) --- */
 .contact .contact-info-item h4 {
   font-size: 18px;
   font-weight: 700;
   color: var(--text-black-900);
+  margin: 0 0 10px;
   text-transform: capitalize;
-  margin: 15px 0 5px;
 }
 
+.contact .contact-info-item p {
+  font-size: 16px;
+  line-height: 25px;
+  color: var(--text-black-700);
+  font-weight: 400;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+/* تنسيق الروابط داخل النصوص */
+.contact .contact-info-item p a {
+  color: var(--text-black-700);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+/* تكبير وتلوين النص عند الهوفر */
+.contact .contact-info-item:hover p a,
+.contact .contact-info-item:hover p {
+  color: var(--skin-color);
+}
+
+/* --- بقية تنسيقات الفورم (Form) كما هي --- */
+.contact .contact-form {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.contact .contact-form .col-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.contact .contact-form .col-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.contact .contact-form .form-item {
+  margin-bottom: 30px;
+}
+
+.contact .contact-form .form-control {
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  background: var(--bg-black-50);
+  border: 1px solid var(--bg-black-50);
+  padding: 10px 25px;
+  font-size: 16px;
+  color: var(--text-black-700);
+  transition: all 0.3s ease;
+}
+
+.contact .contact-form .form-control:focus {
+  box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
+  border-color: var(--skin-color);
+}
+
+.contact .contact-form textarea.form-control {
+  height: 140px;
+}
+
+.contact .contact-form .btn {
+  height: 50px;
+  padding: 0 50px;
+  cursor: pointer;
+}
 /* =======================================================
    تعديل نصوص قسم التواصل (Location, Phone, Email)
    ======================================================= */
@@ -757,10 +861,12 @@ h3.my-profession {
    SKILLS ORBIT ANIMATION (Final & Clean Version)
    ============================================================== */
 
+/* ================= SKILLS ORBIT ANIMATION (BIG SATELLITES VERSION) ================= */
+
 .skill-orbit {
   flex: 0 0 100%;
   max-width: 100%;
-  min-height: 380px; /* Sufficient height */
+  min-height: 400px; /* زيادة الارتفاع قليلاً لاستيعاب الحجم الجديد */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -774,20 +880,19 @@ h3.my-profession {
   }
 }
 
-/* Main Wrapper */
 .orbit-wrapper {
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: 320px; /* زيادة مساحة العمل */
+  height: 320px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* --- 1. Center Icon (Big & Fixed) --- */
+/* --- 1. المركز الثابت --- */
 .center-icon {
   position: absolute;
-  width: 120px; /* Large size */
+  width: 120px;
   height: 120px;
   background: var(--bg-black-100);
   border-radius: 50%;
@@ -797,9 +902,8 @@ h3.my-profession {
   align-items: center;
   box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
   border: 4px solid var(--skin-color);
-  z-index: 10; /* Above everything */
+  z-index: 10;
 
-  /* Smooth Scale Effect */
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
     box-shadow 0.4s ease;
   cursor: pointer;
@@ -816,22 +920,145 @@ h3.my-profession {
   color: var(--text-black-900);
 }
 
-/* Scale on Hover */
 .center-icon:hover {
   transform: scale(1.15);
   box-shadow: 0 0 35px rgba(var(--skin-color), 0.5);
 }
 
-/* --- 2. Rotating Spinner --- */
+/* --- 2. حاوية الدوران --- */
 .orbit-spinner {
   position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 50%;
   z-index: 1;
-  pointer-events: none; /* Allows clicking the center icon */
+  pointer-events: none;
 }
 
+/* --- 3. المهارات الفرعية (تم تكبيرها) --- */
+.satellite {
+  position: absolute;
+  /* تكبير الحجم من 60px إلى 85px */
+  width: 85px;
+  height: 85px;
+  background: var(--bg-black-900);
+  border-radius: 50%;
+  border: 1px solid var(--bg-black-50);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* تكبير الخط */
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-black-700);
+
+  top: 50%;
+  left: 50%;
+
+  /* ضبط التمركز بناءً على الحجم الجديد (نصف الـ 85) */
+  margin-left: -42.5px;
+  margin-top: -42.5px;
+
+  /* زيادة مسافة البعد عن المركز (translate) لـ 145px لمنع التداخل */
+  transform: rotate(calc(360deg / var(--total) * var(--i))) translate(145px)
+    rotate(calc(-360deg / var(--total) * var(--i)));
+
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* تكبير أيقونات المهارات الفرعية */
+.satellite img {
+  width: 32px; /* كان 22px */
+  height: 32px;
+  margin-bottom: 3px;
+  object-fit: contain;
+}
+
+/* ================= Animation Logic ================= */
+
+.orbit-wrapper:hover .satellite {
+  opacity: 1;
+}
+
+.orbit-wrapper:hover .orbit-spinner {
+  animation: spinRight 20s linear infinite;
+}
+
+.orbit-wrapper:hover .satellite {
+  animation: fixSatellite 20s linear infinite;
+}
+
+@keyframes spinRight {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fixSatellite {
+  from {
+    /* هنا أيضاً نستخدم 145px */
+    transform: rotate(calc(360deg / var(--total) * var(--i))) translate(145px)
+      rotate(calc(-360deg / var(--total) * var(--i))) rotate(0deg);
+  }
+  to {
+    transform: rotate(calc(360deg / var(--total) * var(--i))) translate(145px)
+      rotate(calc(-360deg / var(--total) * var(--i))) rotate(-360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 575px) {
+  .skill-orbit {
+    min-height: 350px;
+  }
+  .orbit-wrapper {
+    width: 260px;
+    height: 260px;
+  }
+
+  .center-icon {
+    width: 90px;
+    height: 90px;
+  }
+  .center-icon i {
+    font-size: 35px;
+  }
+  .center-icon span {
+    font-size: 13px;
+  }
+
+  /* تصغيرها قليلاً في الموبايل لتناسب الشاشة */
+  .satellite {
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
+    font-size: 10px;
+    /* تقليل المسافة في الموبايل */
+    transform: rotate(calc(360deg / var(--total) * var(--i))) translate(110px)
+      rotate(calc(-360deg / var(--total) * var(--i)));
+  }
+
+  .satellite img {
+    width: 24px;
+    height: 24px;
+  }
+
+  @keyframes fixSatellite {
+    from {
+      transform: rotate(calc(360deg / var(--total) * var(--i))) translate(110px)
+        rotate(calc(-360deg / var(--total) * var(--i))) rotate(0deg);
+    }
+    to {
+      transform: rotate(calc(360deg / var(--total) * var(--i))) translate(110px)
+        rotate(calc(-360deg / var(--total) * var(--i))) rotate(-360deg);
+    }
+  }
+}
 /* --- 3. Satellites (Skills) --- */
 /* --- 3. Satellites (Skills) - MODIFIED SIZE --- */
 .satellite {
@@ -1057,5 +1284,198 @@ h3.my-profession {
   .about .about-content .personal-info .info-item {
     flex: 0 0 100%;
     max-width: 100%;
+  }
+}
+
+/* ==============================================================
+   Surface Duo & Wide Mobile Fix (450px - 767px)
+   تنسيق خاص للشاشات المتوسطة وعريضة مثل Surface Duo
+   ============================================================== */
+
+@media (min-width: 450px) and (max-width: 767px) {
+  /* زيادة ارتفاع الحاوية */
+  .skill-orbit {
+    min-height: 400px;
+  }
+
+  /* تكبير مساحة العمل */
+  .orbit-wrapper {
+    width: 350px;
+    height: 350px;
+  }
+
+  /* تكبير المركز ليصبح قريباً من حجم الديسك توب */
+  .center-icon {
+    width: 110px;
+    height: 110px;
+  }
+  .center-icon i {
+    font-size: 40px;
+  }
+  .center-icon span {
+    font-size: 15px;
+  }
+
+  /* تكبير المهارات الفرعية */
+  .satellite {
+    width: 75px;
+    height: 75px;
+    margin-left: -37.5px; /* نصف العرض */
+    margin-top: -37.5px; /* نصف الارتفاع */
+    font-size: 11px;
+
+    /* زيادة نصف قطر الدوران ليملأ الشاشة (140px) */
+    transform: rotate(calc(360deg / var(--total) * var(--i))) translate(140px)
+      rotate(calc(-360deg / var(--total) * var(--i)));
+
+    /* الأنيميشن الجديد لهذه الشاشات */
+    animation: orbitMoveTablet 20s linear infinite !important;
+  }
+
+  .satellite img {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* تعريف حركة خاصة لهذه المقاسات */
+  @keyframes orbitMoveTablet {
+    from {
+      transform: rotate(calc(360deg / var(--total) * var(--i))) translate(140px)
+        rotate(calc(-360deg / var(--total) * var(--i))) rotate(0deg);
+    }
+    to {
+      transform: rotate(calc(360deg / var(--total) * var(--i))) translate(140px)
+        rotate(calc(-360deg / var(--total) * var(--i))) rotate(-360deg);
+    }
+  }
+}
+
+/* ==============================================================
+   Surface Duo & Wide Mobile Fix (Corrected Rotation)
+   ============================================================== */
+
+@media (min-width: 450px) and (max-width: 767px) {
+  /* 1. ضبط الحاوية الخارجية */
+  .skill-orbit {
+    min-height: 420px; /* زيادة الارتفاع لراحة الحركة */
+  }
+
+  .orbit-wrapper {
+    width: 360px;
+    height: 360px;
+  }
+
+  /* 2. إجبار الحاوية الأم على الدوران تلقائياً */
+  /* هذا هو السطر الذي كان ناقصاً ويسبب "بوظان" الاتجاه */
+  .orbit-spinner {
+    animation: spinRight 20s linear infinite !important;
+  }
+
+  /* 3. تنسيق المركز */
+  .center-icon {
+    width: 110px;
+    height: 110px;
+  }
+  .center-icon i {
+    font-size: 40px;
+  }
+  .center-icon span {
+    font-size: 15px;
+  }
+
+  /* 4. تنسيق العناصر الفرعية وحركتها */
+  .satellite {
+    width: 75px;
+    height: 75px;
+    margin-left: -37.5px;
+    margin-top: -37.5px;
+    font-size: 11px;
+    opacity: 1; /* ظاهرة دائماً */
+
+    /* الحركة: دوران عكسي للحفاظ على الاستقامة */
+    animation: orbitMoveTablet 20s linear infinite !important;
+  }
+
+  .satellite img {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* 5. تعريف حركة خاصة تضمن ثبات الاتجاه */
+  @keyframes orbitMoveTablet {
+    from {
+      transform: rotate(calc(360deg / var(--total) * var(--i))) translate(145px)
+        /* نصف قطر واسع */ rotate(calc(-360deg / var(--total) * var(--i)))
+        rotate(0deg);
+    }
+    to {
+      transform: rotate(calc(360deg / var(--total) * var(--i))) translate(145px)
+        rotate(calc(-360deg / var(--total) * var(--i))) rotate(-360deg); /* دوران عكسي يلغي دوران الأم */
+    }
+  }
+}
+
+/* ==============================================================
+   iPhone SE & Small Mobile Fix (< 575px)
+   تظبيط المقاسات والدوران لشاشات الموبايل الصغيرة
+   ============================================================== */
+
+@media (max-width: 575px) {
+  /* 1. ضبط مساحة الحاوية */
+  .skill-orbit {
+    min-height: 380px; /* ارتفاع مناسب */
+  }
+
+  .orbit-wrapper {
+    width: 310px; /* عرض مناسب لـ iPhone SE (375px) */
+    height: 310px;
+  }
+
+  /* 2. إجبار الحاوية الأم على الدوران (تصحيح الاتجاه) */
+  .orbit-spinner {
+    animation: spinRight 20s linear infinite !important;
+  }
+
+  /* 3. تكبير المركز قليلاً ليكون واضحاً */
+  .center-icon {
+    width: 95px;
+    height: 95px;
+  }
+  .center-icon i {
+    font-size: 38px;
+  }
+  .center-icon span {
+    font-size: 13px;
+  }
+
+  /* 4. ضبط المهارات الفرعية (حجم أكبر + دوران صحيح) */
+  .satellite {
+    width: 65px; /* تكبير الحجم ليكون واضح */
+    height: 65px;
+    margin-left: -32.5px;
+    margin-top: -32.5px;
+    font-size: 10px;
+    opacity: 1;
+
+    /* استخدام نصف قطر 115px (مناسب جداً لعرض 375px) */
+    animation: orbitMoveMobile 20s linear infinite !important;
+  }
+
+  .satellite img {
+    width: 26px;
+    height: 26px;
+  }
+
+  /* 5. حركة الدوران العكسي (للحفاظ على الصور معدولة) */
+  @keyframes orbitMoveMobile {
+    from {
+      transform: rotate(calc(360deg / var(--total) * var(--i))) translate(115px)
+        /* نصف القطر */ rotate(calc(-360deg / var(--total) * var(--i)))
+        rotate(0deg);
+    }
+    to {
+      transform: rotate(calc(360deg / var(--total) * var(--i))) translate(115px)
+        rotate(calc(-360deg / var(--total) * var(--i))) rotate(-360deg);
+    }
   }
 }
