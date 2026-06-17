@@ -72,7 +72,7 @@ export default function Home({ handleNavClick }) {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="home-img-inner">
-              <img src="/image/me.jpg" alt="Mohamed Abohelal" />
+              <img src="image/me.jpg" alt="Mohamed Abohelal" />
             </div>
           </motion.div>
         </div>

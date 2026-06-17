@@ -15,18 +15,18 @@ export default function About({ handleNavClick }) {
   ];
 
   const nodeSatellites = [
-    { name: 'Express', img: '/image/ex.png' },
-    { name: 'MongoDB', img: '/image/mongo.png' },
-    { name: 'Docker', img: '/image/doc.png' },
-    { name: 'MySQL', img: '/image/my.png' }
+    { name: 'Express', img: 'image/ex.png' },
+    { name: 'MongoDB', img: 'image/mongo.png' },
+    { name: 'Docker', img: 'image/doc.png' },
+    { name: 'MySQL', img: 'image/my.png' }
   ];
 
   const reactSatellites = [
-    { name: 'JS', img: '/image/js.png' },
-    { name: 'TS', img: '/image/ts.png' },
-    { name: 'Tailwind', img: '/image/Tail.png' },
-    { name: 'Bootstrap', img: '/image/boots.jpeg' },
-    { name: 'HTML/CSS', img: '/image/react.png' }
+    { name: 'JS', img: 'image/js.png' },
+    { name: 'TS', img: 'image/ts.png' },
+    { name: 'Tailwind', img: 'image/Tail.png' },
+    { name: 'Bootstrap', img: 'image/boots.jpeg' },
+    { name: 'HTML/CSS', img: 'image/react.png' }
   ];
 
   const certifications = [
@@ -97,7 +97,7 @@ export default function About({ handleNavClick }) {
                 
                 <div className="row">
                   <div className="buttons padd-15">
-                    <a href="/Mohamed-Abohelal-CV.pdf" download className="btn">
+                    <a href="Mohamed-Abohelal-CV.pdf" download className="btn">
                       <FaDownload className="icon-btn-margin" /> Download CV
                     </a>
                     <a 
@@ -146,7 +146,7 @@ export default function About({ handleNavClick }) {
               <div className="skill-orbit padd-15">
                 <div className="orbit-wrapper">
                   <div className="center-icon next-core">
-                    <img src="/image/react.png" alt="React" />
+                    <img src="image/react.png" alt="React" />
                     <span>React</span>
                   </div>
                   <div className="orbit-spinner">

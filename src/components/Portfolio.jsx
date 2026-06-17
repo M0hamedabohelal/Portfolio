@@ -10,14 +10,14 @@ export default function Portfolio() {
       id: 1,
       title: 'Skills Upscale (CV Analyzer)',
       category: 'React.js',
-      image: '/image/img1.png',
+      image: 'image/img1.png',
       shortDesc: 'Developed a React-based frontend web application designed to analyze CVs.',
       fullDesc: 'Skills Upscale is a React-based frontend web application designed to analyze CVs. It implements a fully responsive user interface utilizing modern UI/UX principles and optimized state management to provide seamless, real-time user feedback. It helps users discover their skill gaps and builds an optimal roadmap to career alignment.',
       tags: ['React.js', 'Framer Motion', 'Bootstrap', 'State Management', 'Responsive Design'],
       features: [
         'CV Analysis (Extract structured data, technical, and soft skills from resumes with high accuracy).',
         'Skill Gap Engine (Compare your skills with target job requirements and categorize them with professional accuracy).',
-        'Personalized Roadmap (Generate a personalized learning path to bridge skill gaps based on market demand).'
+        'Personalized Roadmap (Generate a personalized learning path to bridge skill gaps based on market demand).',
       ],
       github: 'https://github.com/M0hamedabohelal/Skills-Upscale',
       demo: 'https://m0hamedabohelal.github.io/Skills-Upscale/'
@@ -26,7 +26,7 @@ export default function Portfolio() {
       id: 2,
       title: 'Interactive Fiqh Book (Al-Fiqh Al-Muyassar)',
       category: 'React.js',
-      image: '/image/img2.png',
+      image: 'image/img2.png',
       shortDesc: 'Designed and developed a highly interactive and visually appealing digital version of "Al-Fiqh Al-Muyassar".',
       fullDesc: 'Designed and developed a highly interactive and visually appealing digital version of "Al-Fiqh Al-Muyassar" using React.js. It features a responsive component design, smooth navigation, and an intuitive user interface to deliver an engaging reading experience of Islamic jurisprudence across all devices.',
       tags: ['React.js', 'Vite', 'Fuse.js', 'Bootstrap', 'Framer Motion', 'YouTube API'],
