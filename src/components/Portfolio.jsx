@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaExternalLinkAlt, FaGithub, FaTimes, FaCode } from 'react-icons/fa';
 
@@ -60,7 +59,7 @@ export default function Portfolio() {
   ];
 
   return (
-    <section className="portfolio section" id="portfolio">
+    <section className="portfolio section" id="portfolio" style={{ zIndex: selectedProject ? 999 : 1 }}>
       <div className="container">
         <div className="row">
           <div className="section-title padd-15">
@@ -111,72 +110,69 @@ export default function Portfolio() {
       </div>
 
       {/* Elegant Details Modal */}
-      {createPortal(
-        <AnimatePresence>
-          {selectedProject && (
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div 
+            className="portfolio-modal-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedProject(null)}
+          >
             <motion.div 
-              className="portfolio-modal-overlay"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelectedProject(null)}
+              className="portfolio-modal-content"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 50, opacity: 0 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              onClick={(e) => e.stopPropagation()}
             >
-              <motion.div 
-                className="portfolio-modal-content"
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: 50, opacity: 0 }}
-                transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button className="close-btn" onClick={() => setSelectedProject(null)}>
-                  <FaTimes />
-                </button>
+              <button className="close-btn" onClick={() => setSelectedProject(null)}>
+                <FaTimes />
+              </button>
+              
+              <div className="modal-grid">
+                <div className="modal-img-container">
+                  <img src={selectedProject.image} alt={selectedProject.title} />
+                </div>
                 
-                <div className="modal-grid">
-                  <div className="modal-img-container">
-                    <img src={selectedProject.image} alt={selectedProject.title} />
+                <div className="modal-info">
+                  <h3>{selectedProject.title}</h3>
+                  <span className="modal-category">{selectedProject.category.toUpperCase()}</span>
+                  <p className="modal-description">{selectedProject.fullDesc}</p>
+                  
+                  <h4>Key Features:</h4>
+                  <ul className="modal-features">
+                    {selectedProject.features.map((feat, idx) => (
+                      <li key={idx}>{feat}</li>
+                    ))}
+                  </ul>
+                  
+                  <h4>Technologies Used:</h4>
+                  <div className="modal-tech-tags">
+                    {selectedProject.tags.map((tag, idx) => (
+                      <span key={idx} className="tech-tag"><FaCode className="tag-icon" /> {tag}</span>
+                    ))}
                   </div>
                   
-                  <div className="modal-info">
-                    <h3>{selectedProject.title}</h3>
-                    <span className="modal-category">{selectedProject.category.toUpperCase()}</span>
-                    <p className="modal-description">{selectedProject.fullDesc}</p>
-                    
-                    <h4>Key Features:</h4>
-                    <ul className="modal-features">
-                      {selectedProject.features.map((feat, idx) => (
-                        <li key={idx}>{feat}</li>
-                      ))}
-                    </ul>
-                    
-                    <h4>Technologies Used:</h4>
-                    <div className="modal-tech-tags">
-                      {selectedProject.tags.map((tag, idx) => (
-                        <span key={idx} className="tech-tag"><FaCode className="tag-icon" /> {tag}</span>
-                      ))}
-                    </div>
-                    
-                    <div className="modal-actions">
-                      {selectedProject.demo !== '#' && (
-                        <a href={selectedProject.demo} target="_blank" rel="noopener noreferrer" className="btn demo-btn">
-                          <FaExternalLinkAlt /> Live Demo
-                        </a>
-                      )}
-                      {selectedProject.github !== '#' && (
-                        <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="btn github-btn">
-                          <FaGithub /> GitHub Repository
-                        </a>
-                      )}
-                    </div>
+                  <div className="modal-actions">
+                    {selectedProject.demo !== '#' && (
+                      <a href={selectedProject.demo} target="_blank" rel="noopener noreferrer" className="btn demo-btn">
+                        <FaExternalLinkAlt /> Live Demo
+                      </a>
+                    )}
+                    {selectedProject.github !== '#' && (
+                      <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="btn github-btn">
+                        <FaGithub /> GitHub Repository
+                      </a>
+                    )}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
-          )}
-        </AnimatePresence>,
-        document.body
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
