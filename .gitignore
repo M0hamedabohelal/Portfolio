@@ -24,3 +24,5 @@ backup-static/
 *.njsproj
 *.sln
 *.sw?
+
+.vercel

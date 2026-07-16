@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaExternalLinkAlt, FaGithub, FaTimes, FaCode } from 'react-icons/fa';
 
@@ -8,6 +9,23 @@ export default function Portfolio() {
   const projects = [
     {
       id: 1,
+      title: 'Fixora (Craftsman-Matching Platform)',
+      category: 'React.js, Firebase, Tailwind CSS',
+      image: 'image/fixora.png',
+      shortDesc: 'Developed a modern, interactive web application as a graduation project for the DEPI initiative in collaboration with SkillsDynamix.',
+      fullDesc: 'Engineered a highly responsive UI using React.js (Vite), Tailwind CSS, and HeroUI, integrated with Firebase for reliable backend services and real-time authentication. Implemented interactive location-based features using Leaflet and enhanced user experience with smooth micro-animations via Framer Motion and React Spring.',
+      tags: ['React.js (Vite)', 'Tailwind CSS', 'HeroUI', 'Firebase', 'Leaflet', 'Framer Motion'],
+      features: [
+        'Real-time Authentication via Firebase.',
+        'Location-based Craftsman Matching with Leaflet.',
+        'Responsive UI with Tailwind CSS and HeroUI.',
+        'Micro-animations for Enhanced UX.'
+      ],
+      github: '#',
+      demo: 'https://fixora-rho.vercel.app/'
+    },
+    {
+      id: 2,
       title: 'Skills Upscale (CV Analyzer)',
       category: 'React.js',
       image: 'image/img1.png',
@@ -23,7 +41,7 @@ export default function Portfolio() {
       demo: 'https://m0hamedabohelal.github.io/Skills-Upscale/'
     },
     {
-      id: 2,
+      id: 3,
       title: 'Interactive Fiqh Book (Al-Fiqh Al-Muyassar)',
       category: 'React.js',
       image: 'image/img2.png',
@@ -94,7 +112,7 @@ export default function Portfolio() {
 
       {/* Elegant Details Modal */}
       <AnimatePresence>
-        {selectedProject && (
+        {selectedProject && createPortal(
           <motion.div 
             className="portfolio-modal-overlay"
             initial={{ opacity: 0 }}
@@ -153,7 +171,8 @@ export default function Portfolio() {
                 </div>
               </div>
             </motion.div>
-          </motion.div>
+          </motion.div>,
+          document.body
         )}
       </AnimatePresence>
     </section>

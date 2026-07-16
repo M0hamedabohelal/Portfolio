@@ -11,7 +11,8 @@ export default function About({ handleNavClick }) {
     { label: 'Phone', value: '+20 109 312 2064', href: 'tel:+201093122064' },
     { label: 'Email', value: 'mohamed.abohelal.eng@gmail.com', href: 'mailto:mohamed.abohelal.eng@gmail.com' },
     { label: 'LinkedIn', value: 'linkedin.com/in/mohamed-abohelal', href: 'https://www.linkedin.com/in/mohamed-abohelal' },
-    { label: 'GitHub', value: 'github.com/M0hamedabohelal', href: 'https://github.com/M0hamedabohelal' }
+    { label: 'GitHub', value: 'github.com/M0hamedabohelal', href: 'https://github.com/M0hamedabohelal' },
+    { label: 'Languages', value: 'Arabic (Native), English (B2)' }
   ];
 
   const nodeSatellites = [
@@ -182,7 +183,7 @@ export default function About({ handleNavClick }) {
                     <div className="card-header-badge">2023 - 2027</div>
                     <h4 className="card-title">Bachelor of Computer Science</h4>
                     <span className="card-subtitle">Tanta University — Computer Science Department</span>
-                    <div className="card-gpa">Grade: <strong>Very Good</strong> | GPA: <strong>3.1</strong></div>
+                    <div className="card-gpa">Grade: <strong>Very Good</strong> | GPA: <strong>3.2</strong></div>
                     <p className="card-desc">Faculty of Computers and Information. Deep study of algorithms, data structures, database design, software engineering, and web technology.</p>
                   </motion.div>
                 </div>
