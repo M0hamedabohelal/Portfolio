@@ -20,7 +20,7 @@ export default function Portfolio() {
         'Responsive UI with Tailwind CSS and HeroUI.',
         'Micro-animations for Enhanced UX.'
       ],
-      github: '#',
+      github: 'https://github.com/M0hamedabohelal/Fixora',
       demo: 'https://fixora-rho.vercel.app/'
     },
     {
