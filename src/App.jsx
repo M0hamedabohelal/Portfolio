@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense, lazy } from 'react';
 import Sidebar from './components/Sidebar';
 import Home from './components/Home';
-import About from './components/About';
-import Services from './components/Services';
-import Portfolio from './components/Portfolio';
-import Contact from './components/Contact';
 import StyleSwitcher, { themeColors } from './components/StyleSwitcher';
 import './App.css';
+
+// Lazy load components that are not immediately visible
+const About = lazy(() => import('./components/About'));
+const Services = lazy(() => import('./components/Services'));
+const Portfolio = lazy(() => import('./components/Portfolio'));
+const Contact = lazy(() => import('./components/Contact'));
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -108,10 +110,12 @@ function App() {
 
       <div className="main-content">
         <Home handleNavClick={handleNavClick} />
-        <About handleNavClick={handleNavClick} />
-        <Services />
-        <Portfolio />
-        <Contact />
+        <Suspense fallback={<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh', color: 'var(--skin-color)' }}>Loading...</div>}>
+          <About handleNavClick={handleNavClick} />
+          <Services />
+          <Portfolio />
+          <Contact />
+        </Suspense>
       </div>
 
       <StyleSwitcher 
