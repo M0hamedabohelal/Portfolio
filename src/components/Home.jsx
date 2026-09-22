@@ -73,7 +73,8 @@ export default function Home({ handleNavClick }) {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="home-img-inner">
-              <img src="./src/assets/1758626029778.jpg" alt="Mohamed Abohelal" loading="eager" fetchpriority="high" />
+              {/* التعديل هنا: استخدمنا profileImg بدلاً من المسار النصي */}
+              <img src={profileImg} alt="Mohamed Abohelal" loading="eager" fetchpriority="high" />
             </div>
           </motion.div>
         </div>
