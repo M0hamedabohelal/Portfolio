@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import profileImg from '../assets/1758626029778.jpg';
 
 export default function Home({ handleNavClick }) {
   const [text, setText] = useState('');
@@ -72,7 +73,7 @@ export default function Home({ handleNavClick }) {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div className="home-img-inner">
-              <img src="image/me.jpg" alt="Mohamed Abohelal" loading="eager" fetchpriority="high" />
+              <img src="./src/assets/1758626029778.jpg" alt="Mohamed Abohelal" loading="eager" fetchpriority="high" />
             </div>
           </motion.div>
         </div>
