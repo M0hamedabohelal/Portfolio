@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaNodeJs, FaCalendar, FaDownload, FaAward, FaCertificate, FaGraduationCap, FaBriefcase, FaTrophy } from 'react-icons/fa';
+import { FaNodeJs, FaDownload, FaAward, FaCertificate, FaGraduationCap, FaBriefcase, FaTrophy } from 'react-icons/fa';
 
 export default function About({ handleNavClick }) {
   const personalInfo = [
@@ -135,7 +135,7 @@ export default function About({ handleNavClick }) {
                           '--i': idx 
                         }}
                       >
-                        <img src={sat.img} alt={sat.name} />
+                        <img src={sat.img} alt={sat.name} loading="lazy" />
                         <span>{sat.name}</span>
                       </div>
                     ))}
@@ -147,7 +147,7 @@ export default function About({ handleNavClick }) {
               <div className="skill-orbit padd-15">
                 <div className="orbit-wrapper">
                   <div className="center-icon next-core">
-                    <img src="image/react.png" alt="React" />
+                    <img src="image/react.png" alt="React" loading="lazy" />
                     <span>React</span>
                   </div>
                   <div className="orbit-spinner">
@@ -160,7 +160,7 @@ export default function About({ handleNavClick }) {
                           '--i': idx 
                         }}
                       >
-                        <img src={sat.img} alt={sat.name} />
+                        <img src={sat.img} alt={sat.name} loading="lazy" />
                         <span>{sat.name}</span>
                       </div>
                     ))}

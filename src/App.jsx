@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense, lazy } from 'react';
+import { useState, useEffect, Suspense, lazy, useRef } from 'react';
 import Sidebar from './components/Sidebar';
 import Home from './components/Home';
 import StyleSwitcher, { themeColors } from './components/StyleSwitcher';
@@ -17,38 +17,48 @@ function App() {
     const saved = localStorage.getItem('skinColor');
     return saved ? JSON.parse(saved) : themeColors[0];
   });
-  const [mousePos, setMousePos] = useState({ x: -100, y: -100 });
+  const glowRef = useRef(null);
 
   // Handle active section scrolling / scroll spy
   useEffect(() => {
     const sections = ['home', 'about', 'services', 'portfolio', 'contact'];
+    let isScrolling = false;
     
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200; // Offset for scroll spy accuracy
-      
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section);
-            break;
+      if (!isScrolling) {
+        window.requestAnimationFrame(() => {
+          const scrollPosition = window.scrollY + 200; // Offset for scroll spy accuracy
+          
+          for (const section of sections) {
+            const el = document.getElementById(section);
+            if (el) {
+              const top = el.offsetTop;
+              const height = el.offsetHeight;
+              if (scrollPosition >= top && scrollPosition < top + height) {
+                setActiveSection(prev => prev !== section ? section : prev);
+                break;
+              }
+            }
           }
-        }
+          isScrolling = false;
+        });
+        isScrolling = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Handle cursor glow tracking
   useEffect(() => {
     const handleMouseMove = (e) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
+      if (glowRef.current) {
+        glowRef.current.style.left = `${e.clientX}px`;
+        glowRef.current.style.top = `${e.clientY}px`;
+      }
     };
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
@@ -95,10 +105,11 @@ function App() {
 
       {/* Mouse Follower Glow */}
       <div 
+        ref={glowRef}
         className="mouse-glow-light"
         style={{
-          left: `${mousePos.x}px`,
-          top: `${mousePos.y}px`,
+          left: '-100px',
+          top: '-100px',
           background: `radial-gradient(circle, rgba(${skinColor.rgb}, 0.08) 0%, rgba(${skinColor.rgb}, 0) 70%)`
         }}
       />

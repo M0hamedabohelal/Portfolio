@@ -10,7 +10,7 @@ export default function Portfolio() {
       id: 1,
       title: 'Fixora (Craftsman-Matching Platform)',
       category: 'React.js, Firebase, Tailwind CSS',
-      image: 'image/fixora.png',
+      image: 'image/fixora.webp',
       shortDesc: 'Developed a modern, interactive web application as a graduation project for the DEPI initiative in collaboration with SkillsDynamix.',
       fullDesc: 'Engineered a highly responsive UI using React.js (Vite), Tailwind CSS, and HeroUI, integrated with Firebase for reliable backend services and real-time authentication. Implemented interactive location-based features using Leaflet and enhanced user experience with smooth micro-animations via Framer Motion and React Spring.',
       tags: ['React.js (Vite)', 'Tailwind CSS', 'HeroUI', 'Firebase', 'Leaflet', 'Framer Motion'],
@@ -27,7 +27,7 @@ export default function Portfolio() {
       id: 2,
       title: 'Skills Upscale (CV Analyzer)',
       category: 'React.js',
-      image: 'image/img1.png',
+      image: 'image/img1.webp',
       shortDesc: 'Developed a React-based frontend web application designed to analyze CVs.',
       fullDesc: 'Skills Upscale is a React-based frontend web application designed to analyze CVs. It implements a fully responsive user interface utilizing modern UI/UX principles and optimized state management to provide seamless, real-time user feedback. It helps users discover their skill gaps and builds an optimal roadmap to career alignment.',
       tags: ['React.js', 'Framer Motion', 'Bootstrap', 'State Management', 'Responsive Design'],
@@ -43,7 +43,7 @@ export default function Portfolio() {
       id: 3,
       title: 'Interactive Fiqh Book (Al-Fiqh Al-Muyassar)',
       category: 'React.js',
-      image: 'image/img2.png',
+      image: 'image/img2.webp',
       shortDesc: 'Designed and developed a highly interactive and visually appealing digital version of "Al-Fiqh Al-Muyassar".',
       fullDesc: 'Designed and developed a highly interactive and visually appealing digital version of "Al-Fiqh Al-Muyassar" using React.js. It features a responsive component design, smooth navigation, and an intuitive user interface to deliver an engaging reading experience of Islamic jurisprudence across all devices.',
       tags: ['React.js', 'Vite', 'Fuse.js', 'Bootstrap', 'Framer Motion', 'YouTube API'],
@@ -89,7 +89,7 @@ export default function Portfolio() {
                 onClick={() => setSelectedProject(project)}
               >
                 <div className="portfolio-img">
-                  <img src={project.image} alt={project.title} />
+                  <img src={project.image} alt={project.title} loading="lazy" />
                   <div className="portfolio-overlay">
                     <span className="view-details-btn">View Details</span>
                   </div>
@@ -133,7 +133,7 @@ export default function Portfolio() {
               
               <div className="modal-grid">
                 <div className="modal-img-container">
-                  <img src={selectedProject.image} alt={selectedProject.title} />
+                  <img src={selectedProject.image} alt={selectedProject.title} loading="lazy" />
                 </div>
                 
                 <div className="modal-info">
