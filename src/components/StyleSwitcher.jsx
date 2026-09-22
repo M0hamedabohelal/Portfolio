@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FaCog, FaMoon, FaSun } from 'react-icons/fa';
 
 export const themeColors = [
@@ -11,15 +11,21 @@ export const themeColors = [
 
 export default function StyleSwitcher({ theme, toggleTheme, skinColor, changeSkinColor }) {
   const [isOpen, setIsOpen] = useState(false);
+  const isOpenRef = useRef(false);
 
-  // Close on scroll
+  // Keep ref in sync with state
+  useEffect(() => {
+    isOpenRef.current = isOpen;
+  }, [isOpen]);
+
+  // Close on scroll — registered only once, uses ref to check state
   useEffect(() => {
     const handleScroll = () => {
-      if (isOpen) setIsOpen(false);
+      if (isOpenRef.current) setIsOpen(false);
     };
-    window.addEventListener('scroll', handleScroll, true);
-    return () => window.removeEventListener('scroll', handleScroll, true);
-  }, [isOpen]);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <div className={`style-switcher ${isOpen ? 'open' : ''}`}>
