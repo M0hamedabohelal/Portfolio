@@ -1,12 +1,20 @@
 import { motion } from 'framer-motion';
-import { FaNodeJs, FaDownload, FaAward, FaCertificate, FaGraduationCap, FaBriefcase, FaTrophy } from 'react-icons/fa';
+import { FaNodeJs, FaDownload, FaAward, FaCertificate, FaGraduationCap, FaBriefcase, FaTrophy, FaDatabase } from 'react-icons/fa';
 
 export default function About({ handleNavClick }) {
+  const birthday = new Date(2005, 4, 25); // 25 May 2005 (month is 0-indexed)
+  const today = new Date();
+  let age = today.getFullYear() - birthday.getFullYear();
+  const hasHadBirthdayThisYear =
+    today.getMonth() > birthday.getMonth() ||
+    (today.getMonth() === birthday.getMonth() && today.getDate() >= birthday.getDate());
+  if (!hasHadBirthdayThisYear) age--;
+
   const personalInfo = [
     { label: 'Birthday', value: '25 May 2005' },
-    { label: 'Age', value: '20' },
+    { label: 'Age', value: String(age) },
     { label: 'Degree', value: 'Bachelor of Computer Science' },
-    { label: 'City', value: 'Cairo, Egypt' },
+    { label: 'City', value: 'Tanta, Egypt' },
     { label: 'Freelance', value: 'Available' },
     { label: 'Phone', value: '+20 109 312 2064', href: 'tel:+201093122064' },
     { label: 'Email', value: 'mohamed.abohelal.eng@gmail.com', href: 'mailto:mohamed.abohelal.eng@gmail.com' },
@@ -15,11 +23,13 @@ export default function About({ handleNavClick }) {
     { label: 'Languages', value: 'Arabic (Native), English (B2)' }
   ];
 
+
   const nodeSatellites = [
     { name: 'Express', img: 'image/ex.png' },
+    { name: 'Nest.js', img: 'image/node.png' },
     { name: 'MongoDB', img: 'image/mongo.png' },
     { name: 'Docker', img: 'image/doc.png' },
-    { name: 'MySQL', img: 'image/my.png' }
+    { name: 'PostgreSQL', img: 'image/my.png' }
   ];
 
   const reactSatellites = [
@@ -31,11 +41,12 @@ export default function About({ handleNavClick }) {
   ];
 
   const certifications = [
-    { title: 'React Frontend Web Developer', provider: 'Digital Egypt Pioneers Initiative (DEPI)', date: 'Nov 2025 - Present' },
-    { title: 'Web Design (HTML, CSS, JS, Bootstrap)', provider: 'National Telecommunication Institute (NTI)', date: 'Nov 2025 - Jan 2026' },
+    { title: 'Node.js Backend Web Development Diploma', provider: 'Route Academy', date: 'Expected Apr 2027' },
+    { title: 'React Frontend Developer Internship', provider: 'Creativa Innovation Hub, Mansoura', date: 'Oct 2026 - Present' },
+    { title: 'AI Coder: Complete Claude Code & Coding Agents Course', provider: 'Udemy · 16.5 Total Hours', date: 'Nov 2026' },
+    { title: 'React Frontend Web Development', provider: 'Digital Egypt Pioneers Initiative (DEPI)', date: 'Jul 2026' },
     { title: 'Fundamentals of Programming (C++)', provider: 'Route Academy', date: 'May 2024 - Sep 2024' },
-    { title: 'Team Leadership', provider: 'Udemy', date: 'Feb 2024' },
-    { title: 'IT Infrastructure (CCNA, MCSA, Firewall)', provider: 'IT GATE Academy', date: 'Jul 2024 - Dec 2024' }
+    { title: 'CCNA (200-301)', provider: 'IT GATE Academy · 70 Credit Hours · Grade: Very Good', date: 'Jul 2024 - Sep 2024' }
   ];
 
   const activities = [
@@ -66,11 +77,11 @@ export default function About({ handleNavClick }) {
           <div className="about-content padd-15">
             <div className="row">
               <div className="about-text padd-15">
-                <h3>I'm Mohamed Abohelal, a passionate <span>MERN Stack Web Developer</span></h3>
+                <h3>I'm Mohamed Abohelal, a passionate <span>Full Stack Web Developer (MERN / Nest.js)</span></h3>
                 <p>
-                  Full-stack web developer specialized in MERN stack. Skilled in building responsive front-end interfaces with 
-                  React and scalable back-end systems using Node.js and Express. Passionate about performance optimization, 
-                  clean architecture, and delivering user-focused applications.
+                  Full-stack web developer specializing in the MERN stack, React.js, and modern frontend architectures. 
+                  Experienced in building scalable back-end systems using Node.js and Nest.js. Focused on performance 
+                  optimization, component reusability, and delivering pixel-perfect, user-centric web applications.
                 </p>
               </div>
             </div>
@@ -84,7 +95,10 @@ export default function About({ handleNavClick }) {
                         {info.label} : {' '}
                         {info.href ? (
                           <span>
-                            <a href={info.href} target="_blank" rel="noopener noreferrer">
+                            <a 
+                              href={info.href} 
+                              {...(info.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                            >
                               {info.value}
                             </a>
                           </span>
@@ -198,7 +212,33 @@ export default function About({ handleNavClick }) {
                     whileHover={{ y: -5 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="card-header-badge">Nov 2025 - Present</div>
+                    <div className="card-header-badge">Oct 2026 - Present</div>
+                    <h4 className="card-title">Node.js Back End Developer Intern</h4>
+                    <span className="card-subtitle">Route · Nasr City (On-site)</span>
+                    <ul className="card-list">
+                      <li>Developing and maintaining backend solutions utilizing Node.js, Express.js, and related technologies.</li>
+                    </ul>
+                  </motion.div>
+
+                  <motion.div 
+                    className="timeline-card shadow-dark mt-4"
+                    whileHover={{ y: -5 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="card-header-badge">Oct 2026 - Present</div>
+                    <h4 className="card-title">React Frontend Developer Intern</h4>
+                    <span className="card-subtitle">Creativa Innovation Hub, Mansoura</span>
+                    <ul className="card-list">
+                      <li>Building responsive web interfaces using HTML5, CSS3, and modern frontend tools.</li>
+                    </ul>
+                  </motion.div>
+
+                  <motion.div 
+                    className="timeline-card shadow-dark mt-4"
+                    whileHover={{ y: -5 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="card-header-badge">Nov 2025 - Jul 2026</div>
                     <h4 className="card-title">React Frontend Web Developer</h4>
                     <span className="card-subtitle">Digital Egypt Pioneers Initiative (DEPI)</span>
                     <ul className="card-list">
@@ -226,6 +266,13 @@ export default function About({ handleNavClick }) {
               </div>
             </div>
 
+            {/* Section Divider */}
+            <div className="section-divider">
+              <span className="divider-line"></span>
+              <span className="divider-dot"></span>
+              <span className="divider-line"></span>
+            </div>
+
             {/* Certifications Redesign - Side-by-side Grid */}
             <div className="row mt-5">
               <div className="padd-15 col-12">
@@ -250,6 +297,13 @@ export default function About({ handleNavClick }) {
                   ))}
                 </div>
               </div>
+            </div>
+
+            {/* Section Divider */}
+            <div className="section-divider">
+              <span className="divider-line"></span>
+              <span className="divider-dot"></span>
+              <span className="divider-line"></span>
             </div>
 
             {/* Extracurricular Activities Redesign */}

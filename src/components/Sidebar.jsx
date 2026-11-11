@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaHome, FaUser, FaList, FaBriefcase, FaComments } from 'react-icons/fa';
+import logo from '../assets/logo.png';
 
 export default function Sidebar({ activeSection, handleNavClick }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,8 +22,10 @@ export default function Sidebar({ activeSection, handleNavClick }) {
     <>
       <div className={`aside ${isOpen ? 'open' : ''}`}>
         <div className="logo">
-          <a href="#home" onClick={() => onLinkClick('home')}>
-            <span>M</span>o
+          <a href="#home" onClick={() => onLinkClick('home')} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ width: '90px', height: '90px', borderRadius: '50%', overflow: 'hidden', border: '2px solid var(--skin-color)', boxShadow: '0 4px 15px rgba(0,0,0,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#000' }}>
+              <img src={logo} alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'cover', transform: 'scale(1.45)' }} />
+            </div>
           </a>
         </div>
         <div 

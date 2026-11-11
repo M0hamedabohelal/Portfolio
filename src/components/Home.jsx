@@ -1,19 +1,17 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import profileImg from '../assets/1758626029778.jpg';
+
+const WORDS = ["Full Stack Developer", "MERN Stack Developer", "React Specialist", "Nest.js Developer"];
 
 export default function Home({ handleNavClick }) {
   const [text, setText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(150);
-
-  const words = ["MERN Stack Developer", "Software Engineer", "React Specialist", "Node.js Expert"];
   
   useEffect(() => {
     const handleType = () => {
-      const i = loopNum % words.length;
-      const fullText = words[i];
+      const i = loopNum % WORDS.length;
+      const fullText = WORDS[i];
 
       setText(isDeleting 
         ? fullText.substring(0, text.length - 1) 
@@ -38,12 +36,7 @@ export default function Home({ handleNavClick }) {
     <section className="home section active" id="home">
       <div className="container">
         <div className="row">
-          <motion.div 
-            className="home-info"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <div className="home-info home-info-animate">
             <h3 className="hello">
               Hello, my name is <span className="name">Mohamed Abohelal</span>
             </h3>
@@ -52,8 +45,9 @@ export default function Home({ handleNavClick }) {
               <span className="typed-cursor">|</span>
             </h3>
             <p>
-              Full-stack web developer specialized in MERN stack. Skilled in building responsive front-end interfaces with 
-              React and scalable back-end systems using Node.js and Express.
+              Full-stack web developer specializing in the MERN stack, React.js, and modern frontend architectures. 
+              Experienced in building scalable back-end systems using Node.js and Nest.js. Focused on performance 
+              optimization, component reusability, and delivering pixel-perfect, user-centric web applications.
             </p>
             <a 
               href="#contact" 
@@ -65,18 +59,12 @@ export default function Home({ handleNavClick }) {
             >
               Hire Me
             </a>
-          </motion.div>
-          <motion.div 
-            className="home-img padd-15"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
+          </div>
+          <div className="home-img padd-15 home-img-animate">
             <div className="home-img-inner">
-              {/* التعديل هنا: استخدمنا profileImg بدلاً من المسار النصي */}
-              <img src={profileImg} alt="Mohamed Abohelal" loading="eager" fetchpriority="high" />
+              <img src="/image/profile.webp" alt="Mohamed Abohelal" loading="eager" fetchpriority="high" />
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

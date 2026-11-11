@@ -1,16 +1,71 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaExternalLinkAlt, FaGithub, FaTimes, FaCode } from 'react-icons/fa';
 
 export default function Portfolio() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    if (!selectedProject) return;
+
+    const previousActiveElement = document.activeElement;
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setSelectedProject(null);
+        return;
+      }
+      if (e.key === 'Tab' && modalRef.current) {
+        const focusables = modalRef.current.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    // Auto-focus the close button or first interactive element
+    const timer = setTimeout(() => {
+      if (modalRef.current) {
+        const firstFocusable = modalRef.current.querySelector('button, [href]');
+        if (firstFocusable) firstFocusable.focus();
+      }
+    }, 50);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = originalOverflow;
+      clearTimeout(timer);
+      if (previousActiveElement && typeof previousActiveElement.focus === 'function') {
+        previousActiveElement.focus();
+      }
+    };
+  }, [selectedProject]);
 
   const projects = [
     {
       id: 1,
       title: 'Fixora (Craftsman-Matching Platform)',
       category: 'React.js, Firebase, Tailwind CSS',
-      image: 'image/fixora.png',
+      image: 'image/fixora.webp',
       shortDesc: 'Developed a modern, interactive web application as a graduation project for the DEPI initiative in collaboration with SkillsDynamix.',
       fullDesc: 'Engineered a highly responsive UI using React.js (Vite), Tailwind CSS, and HeroUI, integrated with Firebase for reliable backend services and real-time authentication. Implemented interactive location-based features using Leaflet and enhanced user experience with smooth micro-animations via Framer Motion and React Spring.',
       tags: ['React.js (Vite)', 'Tailwind CSS', 'HeroUI', 'Firebase', 'Leaflet', 'Framer Motion'],
@@ -27,7 +82,7 @@ export default function Portfolio() {
       id: 2,
       title: 'Skills Upscale (CV Analyzer)',
       category: 'React.js',
-      image: 'image/img1.png',
+      image: 'image/img1.webp',
       shortDesc: 'Developed a React-based frontend web application designed to analyze CVs.',
       fullDesc: 'Skills Upscale is a React-based frontend web application designed to analyze CVs. It implements a fully responsive user interface utilizing modern UI/UX principles and optimized state management to provide seamless, real-time user feedback. It helps users discover their skill gaps and builds an optimal roadmap to career alignment.',
       tags: ['React.js', 'Framer Motion', 'Bootstrap', 'State Management', 'Responsive Design'],
@@ -37,13 +92,13 @@ export default function Portfolio() {
         'Personalized Roadmap (Generate a personalized learning path to bridge skill gaps based on market demand).',
       ],
       github: 'https://github.com/M0hamedabohelal/Skills-Upscale',
-      demo: 'https://m0hamedabohelal.github.io/Skills-Upscale/'
+      demo: 'https://m0hamedabohelal.github.io/SkillsUpscale/'
     },
     {
       id: 3,
       title: 'Interactive Fiqh Book (Al-Fiqh Al-Muyassar)',
       category: 'React.js',
-      image: 'image/img2.png',
+      image: 'image/website1.webp',
       shortDesc: 'Designed and developed a highly interactive and visually appealing digital version of "Al-Fiqh Al-Muyassar".',
       fullDesc: 'Designed and developed a highly interactive and visually appealing digital version of "Al-Fiqh Al-Muyassar" using React.js. It features a responsive component design, smooth navigation, and an intuitive user interface to deliver an engaging reading experience of Islamic jurisprudence across all devices.',
       tags: ['React.js', 'Vite', 'Fuse.js', 'Bootstrap', 'Framer Motion', 'YouTube API'],
@@ -54,7 +109,7 @@ export default function Portfolio() {
         'Advanced Search and Glossary engine for rapid Islamic jurisprudence lookup.'
       ],
       github: 'https://github.com/M0hamedabohelal/MO-Fiqh',
-      demo: 'https://m0hamedabohelal.github.io/MO-Fiqh/'
+      demo: 'https://fqh.me/'
     }
   ];
 
@@ -77,12 +132,11 @@ export default function Portfolio() {
         <div className="row justify-content-center">
           {projects.map((project) => (
             <motion.div 
-              className="portfolio-item padd-15" 
+              className="portfolio-item col-lg-6 col-md-6 col-12 padd-15" 
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: project.id * 0.1 }}
-              style={{ flex: '0 0 50%', maxWidth: '50%' }}
             >
               <div 
                 className="portfolio-item-inner shadow-dark"
@@ -120,6 +174,10 @@ export default function Portfolio() {
             onClick={() => setSelectedProject(null)}
           >
             <motion.div 
+              ref={modalRef}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="modal-project-title"
               className="portfolio-modal-content"
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
@@ -127,7 +185,11 @@ export default function Portfolio() {
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <button className="close-btn" onClick={() => setSelectedProject(null)}>
+              <button 
+                className="close-btn" 
+                onClick={() => setSelectedProject(null)}
+                aria-label="Close project details"
+              >
                 <FaTimes />
               </button>
               
@@ -137,7 +199,7 @@ export default function Portfolio() {
                 </div>
                 
                 <div className="modal-info">
-                  <h3>{selectedProject.title}</h3>
+                  <h3 id="modal-project-title">{selectedProject.title}</h3>
                   <span className="modal-category">{selectedProject.category.toUpperCase()}</span>
                   <p className="modal-description">{selectedProject.fullDesc}</p>
                   

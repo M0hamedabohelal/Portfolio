@@ -1,6 +1,10 @@
-import { FaPhone, FaMapMarkerAlt, FaEnvelope, FaLinkedin } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaPhone, FaMapMarkerAlt, FaEnvelope, FaLinkedin, FaPaperPlane, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 
 export default function Contact() {
+  const [status, setStatus] = useState('idle'); // idle | loading | success | error
+  const [result, setResult] = useState('');
+
   const contactItems = [
     {
       icon: <FaPhone />,
@@ -11,7 +15,7 @@ export default function Contact() {
     {
       icon: <FaMapMarkerAlt />,
       title: 'Location',
-      desc: 'Cairo, Egypt'
+      desc: 'Tanta, Egypt'
     },
     {
       icon: <FaEnvelope />,
@@ -26,6 +30,37 @@ export default function Contact() {
       href: 'https://www.linkedin.com/in/mohamed-abohelal'
     }
   ];
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('loading');
+
+    const formData = new FormData(e.target);
+    formData.append('access_key', '93b9a66c-de26-4f5c-8808-54519cb7264b');
+    formData.append('from_name', 'Portfolio Contact Form');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus('success');
+        setResult('Message sent successfully! I\'ll get back to you soon.');
+        e.target.reset();
+      } else {
+        setStatus('error');
+        setResult(data.message || 'Something went wrong. Please try again.');
+      }
+    } catch {
+      setStatus('error');
+      setResult('Network error. Please check your connection and try again.');
+    }
+
+    setTimeout(() => setStatus('idle'), 5000);
+  };
 
   return (
     <section className="contact section" id="contact">
@@ -48,7 +83,10 @@ export default function Contact() {
               <h4>{item.title}</h4>
               <p>
                 {item.href ? (
-                  <a href={item.href} target="_blank" rel="noopener noreferrer">
+                  <a 
+                    href={item.href} 
+                    {...(item.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  >
                     {item.desc}
                   </a>
                 ) : (
@@ -63,11 +101,10 @@ export default function Contact() {
         
         <div className="row">
           <div className="contact-form padd-15">
-            <form 
-              action="https://send.pageclip.co/53fn9pNKwXjjx7b4elNne4cezf2hNRvf" 
-              className="pageclip-form" 
-              method="post"
-            >
+            <form onSubmit={handleSubmit}>
+              {/* Anti-spam botcheck */}
+              <input type="checkbox" name="botcheck" style={{ display: 'none' }} />
+
               <div className="row">
                 <div className="form-item col-6 padd-15">
                   <div className="form-group">
@@ -76,6 +113,8 @@ export default function Contact() {
                       name="name" 
                       className="form-control" 
                       placeholder="Name" 
+                      minLength="3"
+                      title="Name must be at least 3 characters"
                       required 
                     />
                   </div>
@@ -87,6 +126,8 @@ export default function Contact() {
                       name="email" 
                       className="form-control" 
                       placeholder="Email" 
+                      pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                      title="Please enter a valid email address"
                       required 
                     />
                   </div>
@@ -101,6 +142,7 @@ export default function Contact() {
                       name="subject" 
                       className="form-control" 
                       placeholder="Subject" 
+                      minLength="4"
                       required 
                     />
                   </div>
@@ -114,6 +156,8 @@ export default function Contact() {
                       name="message" 
                       className="form-control" 
                       placeholder="Message" 
+                      minLength="10"
+                      title="Message must be at least 10 characters"
                       required
                     ></textarea>
                   </div>
@@ -122,9 +166,37 @@ export default function Contact() {
               
               <div className="row">
                 <div className="form-item col-12 padd-15">
-                  <button type="submit" className="btn pageclip-form__submit">
-                    <span>Send Message</span>
+                  <button 
+                    type="submit" 
+                    className={`btn contact-submit-btn ${status === 'loading' ? 'loading' : ''}`}
+                    disabled={status === 'loading'}
+                  >
+                    {status === 'loading' ? (
+                      <>
+                        <span className="btn-spinner"></span>
+                        <span>Sending...</span>
+                      </>
+                    ) : (
+                      <>
+                        <FaPaperPlane className="icon-btn-margin" />
+                        <span>Send Message</span>
+                      </>
+                    )}
                   </button>
+
+                  {/* Result message */}
+                  {status === 'success' && (
+                    <div className="form-result success">
+                      <FaCheckCircle />
+                      <span>{result}</span>
+                    </div>
+                  )}
+                  {status === 'error' && (
+                    <div className="form-result error">
+                      <FaTimesCircle />
+                      <span>{result}</span>
+                    </div>
+                  )}
                 </div>
               </div>
             </form>

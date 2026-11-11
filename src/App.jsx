@@ -1,7 +1,8 @@
 import { useState, useEffect, Suspense, lazy, useRef } from 'react';
 import Sidebar from './components/Sidebar';
 import Home from './components/Home';
-import StyleSwitcher, { themeColors } from './components/StyleSwitcher';
+import StyleSwitcher from './components/StyleSwitcher';
+import { themeColors } from './constants/themeColors';
 import './App.css';
 
 // Lazy load components that are not immediately visible
@@ -12,10 +13,27 @@ const Contact = lazy(() => import('./components/Contact'));
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
-  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
+  const [theme, setTheme] = useState(() => {
+    try {
+      const saved = localStorage.getItem('theme');
+      return (saved === 'dark' || saved === 'light') ? saved : 'dark';
+    } catch {
+      return 'dark';
+    }
+  });
   const [skinColor, setSkinColor] = useState(() => {
-    const saved = localStorage.getItem('skinColor');
-    return saved ? JSON.parse(saved) : themeColors[0];
+    try {
+      const saved = localStorage.getItem('skinColor');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && typeof parsed === 'object' && parsed.hex && parsed.rgb) {
+          return parsed;
+        }
+      }
+    } catch {
+      // Fallback on corrupt or invalid JSON in localStorage
+    }
+    return themeColors[0];
   });
   const glowRef = useRef(null);
 
@@ -121,10 +139,16 @@ function App() {
 
       <div className="main-content">
         <Home handleNavClick={handleNavClick} />
-        <Suspense fallback={<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh', color: 'var(--skin-color)' }}>Loading...</div>}>
+        <Suspense fallback={null}>
           <About handleNavClick={handleNavClick} />
+        </Suspense>
+        <Suspense fallback={null}>
           <Services />
+        </Suspense>
+        <Suspense fallback={null}>
           <Portfolio />
+        </Suspense>
+        <Suspense fallback={null}>
           <Contact />
         </Suspense>
       </div>
